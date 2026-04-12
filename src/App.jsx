@@ -167,13 +167,9 @@ export default function App() {
           </div>
 
           <div className="content-wrap hero-intro">
-            <div className="hero-brandline">
-              <BrandSafariLogo className="brand-logo--hero" />
-              <span className="eyebrow">{heroContent.subtitle}</span>
-            </div>
-
             <div className="hero-topline">
               <div className="hero-copy">
+                <span className="eyebrow">{heroContent.subtitle}</span>
                 <h1>{heroContent.title}</h1>
               </div>
 

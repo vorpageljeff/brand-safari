@@ -18,10 +18,9 @@ export const heroContent = {
 };
 
 export const heroVideo = {
-  label: "Brand film",
-  src: "https://videos.pexels.com/video-files/34645670/14684105_3840_2160_30fps.mp4",
-  poster:
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+  label: "Brand motion",
+  src: "/brand-safari-home-hero.mp4",
+  poster: "/brand-safari-home-hero-poster.png",
 };
 
 export const aboutContent = {
