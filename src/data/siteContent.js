@@ -11,22 +11,72 @@ export const whatsappDisplay = "(45) 99127-8585";
 export const whatsappHref =
   "https://wa.me/5545991278585?text=Oi%2C%20vim%20pelo%20site%20da%20Brand%20Safari%20e%20gostaria%20de%20conversar.";
 
+export const heroContent = {
+  title: "Marcas sao construidas com analise, estrategia e um caminho claro para crescer.",
+  subtitle: "Estudio de Branding",
+  ctaLabel: "Vamos conversar",
+};
+
+export const heroVideo = {
+  label: "Brand film",
+  src: "https://videos.pexels.com/video-files/34645670/14684105_3840_2160_30fps.mp4",
+  poster:
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+};
+
+export const aboutContent = {
+  eyebrow: "Sobre",
+  title: "Para construir sua marca.",
+  description:
+    "Para construir sua marca, seja uma empresa, marca pessoal ou produto, a Brand Safari desenvolve um planejamento de comunicacao baseado em analise de mercado, diagnostico do negocio e posicionamento de marca.",
+  complementaryText: "O resultado e um plano de acao claro. E clareza gera crescimento.",
+};
+
+export const serviceSection = {
+  eyebrow: "Servicos",
+  title: "Como trabalhamos",
+};
+
+export const serviceDetails = [
+  {
+    title: "Consultoria de Marca",
+    paragraphs: [
+      "Para quem quer construir ou reposicionar a marca com estrutura e direcao. A partir do diagnostico do negocio, desenvolvemos o posicionamento e um plano de comunicacao pronto para executar.",
+      "Para quem precisa avancar em uma etapa especifica, a consultoria tambem acontece em projetos pontuais: diagnostico de marca, DNA ou plano de comunicacao com escopo e prazo definidos.",
+    ],
+  },
+  {
+    title: "Mentoria",
+    paragraphs: [
+      "Individual ou em grupo. Para quem quer construir a propria marca com autonomia e acompanhamento proximo em cada etapa.",
+    ],
+  },
+  {
+    title: "Conteudo de Marca",
+    paragraphs: [
+      "Para quem quer terceirizar a producao de conteudo com estrategia. Planejamento, criacao e gestao de midias sociais.",
+    ],
+  },
+  {
+    title: "Lancamento de Infoproduto",
+    paragraphs: [
+      "Da ideia ao lancamento. Posicionamento, estrutura e plano de comunicacao para quem quer lancar um produto digital com base solida.",
+    ],
+  },
+];
+
+export const contactSection = {
+  eyebrow: "Contato",
+  title: "Pronto para construir sua marca?",
+  description: "Vamos conversar sobre a sua marca.",
+  ctaLabel: "Entra em contato",
+};
+
 export const heroImages = [
   "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
   "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
   "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80",
   "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
-];
-
-export const heroParagraphs = [
-  "A Brand Safari funciona como agencia full service com linguagem editorial, leitura de negocio e uma entrega visual muito mais proxima de um case vivo do que de uma landing generrica.",
-  "A referencia que voce enviou tem esse ritmo de manifesto, portfolio forte, servicos claros e prova social. Mantive essa estrutura e troquei o espaco do video por um carrossel grande logo no hero.",
-];
-
-export const heroStats = [
-  { value: "14", label: "anos criando marcas e campanhas" },
-  { value: "60+", label: "clientes atendidos em multiplos setores" },
-  { value: "360", label: "projetos conectando on e off" },
 ];
 
 export const portfolioProjects = [

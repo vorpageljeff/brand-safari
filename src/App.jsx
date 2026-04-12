@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import {
+  aboutContent,
   awards,
   connections,
+  contactSection,
   contactInfo,
-  heroImages,
-  heroParagraphs,
-  heroStats,
+  heroContent,
+  heroVideo,
   navigation,
   portfolioProjects,
-  products,
-  serviceTags,
+  serviceDetails,
+  serviceSection,
   testimonials,
   values,
   whatsappDisplay,
@@ -22,7 +23,7 @@ function SectionIntro({ eyebrow, title, description }) {
     <div className="section-intro">
       <span>{eyebrow}</span>
       <h2>{title}</h2>
-      <p>{description}</p>
+      {description ? <p>{description}</p> : null}
     </div>
   );
 }
@@ -39,17 +40,7 @@ function WhatsAppIcon() {
 }
 
 export default function App() {
-  const [activeProductId, setActiveProductId] = useState(products[0].id);
-  const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveHeroIndex((current) => (current + 1) % heroImages.length);
-    }, 4200);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,17 +53,6 @@ export default function App() {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const activeProduct =
-    products.find((product) => product.id === activeProductId) ?? products[0];
-
-  const nextHero = () => {
-    setActiveHeroIndex((current) => (current + 1) % heroImages.length);
-  };
-
-  const previousHero = () => {
-    setActiveHeroIndex((current) => (current - 1 + heroImages.length) % heroImages.length);
-  };
 
   return (
     <div className="site-shell">
@@ -167,37 +147,21 @@ export default function App() {
         <section className="hero-section" id="about">
           <div className="hero-showcase">
             <div className="hero-carousel">
-              <img
-                src={heroImages[activeHeroIndex]}
-                alt={`Slide principal ${activeHeroIndex + 1}`}
+              <video
+                className="hero-video"
+                src={heroVideo.src}
+                poster={heroVideo.poster}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
               />
               <div className="hero-carousel__overlay" />
+              <div className="hero-carousel__pulse" />
 
               <div className="hero-carousel__top">
-                <span>Campaign carousel</span>
-
-                <div className="hero-carousel__actions">
-                  <button type="button" onClick={previousHero} aria-label="Imagem anterior">
-                    Prev
-                  </button>
-                  <button type="button" onClick={nextHero} aria-label="Proxima imagem">
-                    Next
-                  </button>
-                </div>
-              </div>
-
-              <div className="hero-carousel__bottom">
-                <div className="hero-dots" role="tablist" aria-label="Hero carousel">
-                  {heroImages.map((image, index) => (
-                    <button
-                      key={image}
-                      type="button"
-                      className={index === activeHeroIndex ? "is-active" : ""}
-                      onClick={() => setActiveHeroIndex(index)}
-                      aria-label={`Ir para slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
+                <span>{heroVideo.label}</span>
               </div>
             </div>
           </div>
@@ -205,38 +169,40 @@ export default function App() {
           <div className="content-wrap hero-intro">
             <div className="hero-brandline">
               <BrandSafariLogo className="brand-logo--hero" />
-              <span className="eyebrow">The Safari Way</span>
+              <span className="eyebrow">{heroContent.subtitle}</span>
             </div>
 
             <div className="hero-topline">
               <div className="hero-copy">
-                <h1>Elegancia editorial, menu minimalista e um carrossel protagonista na abertura.</h1>
+                <h1>{heroContent.title}</h1>
               </div>
 
               <div className="hero-support">
-                {heroParagraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-
                 <div className="hero-actions">
-                  <a className="hero-button hero-button--primary" href="#portfolio">
-                    Ver portfolio
-                  </a>
-                  <a className="hero-button hero-button--secondary" href="#services">
-                    Conhecer servicos
+                  <a
+                    className="hero-button hero-button--primary"
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
+                  >
+                    {heroContent.ctaLabel}
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="content-wrap hero-stats">
-            {heroStats.map((item) => (
-              <article key={item.label} className="stat-tile">
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </article>
-            ))}
+          <div className="content-wrap about-band">
+            <SectionIntro
+              eyebrow={aboutContent.eyebrow}
+              title={aboutContent.title}
+              description={aboutContent.description}
+            />
+
+            <div className="about-band__copy">
+              <p>{aboutContent.complementaryText}</p>
+            </div>
           </div>
         </section>
 
@@ -277,42 +243,22 @@ export default function App() {
 
         <section className="content-wrap content-section" id="services">
           <SectionIntro
-            eyebrow="Servicos"
-            title="Categorias e novos produtos"
-            description="Aqui a pagina replica o ritmo do Candy Shop com tags de especialidade e um segundo bloco de produtos consultivos."
+            eyebrow={serviceSection.eyebrow}
+            title={serviceSection.title}
           />
 
-          <div className="service-tag-list">
-            {serviceTags.map((tag) => (
-              <span key={tag}>{tag}</span>
+          <div className="service-detail-list">
+            {serviceDetails.map((service) => (
+              <article key={service.title} className="service-detail">
+                <span className="service-detail__eyebrow">Servico</span>
+                <h3>{service.title}</h3>
+                <div className="service-detail__copy">
+                  {service.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </article>
             ))}
-          </div>
-
-          <div className="products-layout">
-            <div className="products-selector" role="tablist" aria-label="Produtos do estudio">
-              {products.map((product) => (
-                <button
-                  key={product.id}
-                  type="button"
-                  className={product.id === activeProductId ? "product-pill is-active" : "product-pill"}
-                  onClick={() => setActiveProductId(product.id)}
-                >
-                  {product.name}
-                </button>
-              ))}
-            </div>
-
-            <article className="product-panel">
-              <span>Novo produto</span>
-              <h3>{activeProduct.name}</h3>
-              <p>{activeProduct.description}</p>
-
-              <div className="product-points">
-                {activeProduct.points.map((point) => (
-                  <div key={point}>{point}</div>
-                ))}
-              </div>
-            </article>
           </div>
         </section>
 
@@ -404,12 +350,9 @@ export default function App() {
         <section className="contact-section" id="contact">
           <div className="content-wrap contact-shell">
             <div className="contact-lead">
-              <span className="eyebrow">Contato</span>
-              <h2>Conversa direta, sem formulario e sem friccao.</h2>
-              <p>
-                Se fizer sentido para a sua marca, a melhor porta de entrada e o WhatsApp. A partir
-                dali alinhamos briefing, contexto, escopo e o melhor formato de projeto.
-              </p>
+              <span className="eyebrow">{contactSection.eyebrow}</span>
+              <h2>{contactSection.title}</h2>
+              <p>{contactSection.description}</p>
 
               <div className="contact-actions">
                 <a
@@ -419,10 +362,7 @@ export default function App() {
                   rel="noreferrer"
                   aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
                 >
-                  Chamar no WhatsApp
-                </a>
-                <a className="contact-action contact-action--secondary" href="#services">
-                  Ver servicos
+                  {contactSection.ctaLabel}
                 </a>
               </div>
             </div>
