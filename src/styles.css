@@ -2445,3 +2445,50 @@ body::before {
     transform: translateY(0);
   }
 }
+
+/* Fixed logo usage */
+
+.brand-logo {
+  display: inline-block;
+  color: #111111;
+  line-height: 0;
+}
+
+.brand-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.brand-logo--header {
+  width: 8.6rem;
+}
+
+.brand-logo--hero {
+  width: clamp(10.5rem, 18vw, 14rem);
+}
+
+.site-shell .hero-copy h1,
+.site-shell .site-nav a,
+.site-shell .header-cta,
+.site-shell .hero-button,
+.site-shell .site-header__mobile-nav a,
+.site-shell .site-header__mobile-links a,
+.site-shell .site-header__mobile-cta {
+  font-family: "Syne", sans-serif;
+}
+
+.site-shell .eyebrow,
+.site-shell .site-header__mobile-links span {
+  font-family: "Manrope", sans-serif;
+}
+
+@media (max-width: 860px) {
+  .brand-logo--header {
+    width: 7.2rem;
+  }
+
+  .brand-logo--hero {
+    width: 9.6rem;
+  }
+}

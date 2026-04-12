@@ -15,6 +15,7 @@ import {
   whatsappDisplay,
   whatsappHref,
 } from "./data/siteContent";
+import BrandSafariLogo from "./components/BrandSafariLogo";
 
 function SectionIntro({ eyebrow, title, description }) {
   return (
@@ -22,15 +23,6 @@ function SectionIntro({ eyebrow, title, description }) {
       <span>{eyebrow}</span>
       <h2>{title}</h2>
       <p>{description}</p>
-    </div>
-  );
-}
-
-function BrandSafariLogo({ className = "" }) {
-  return (
-    <div className={`brand-logo ${className}`.trim()} aria-label="Brand Safari">
-      <span>Brand</span>
-      <span>Safari</span>
     </div>
   );
 }
