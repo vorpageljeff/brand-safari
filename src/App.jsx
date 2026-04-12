@@ -402,54 +402,60 @@ export default function App() {
         </section>
 
         <section className="contact-section" id="contact">
-          <div className="content-wrap contact-grid">
-            <div className="contact-copy">
+          <div className="content-wrap contact-shell">
+            <div className="contact-lead">
               <span className="eyebrow">Contato</span>
-              <h2>Nos chamamos, ou ligamos para voce.</h2>
+              <h2>Conversa direta, sem formulario e sem friccao.</h2>
               <p>
-                Fechei a pagina com uma area de novos negocios e um formulario objetivo, seguindo a
-                estrutura de encerramento do site que voce indicou.
+                Se fizer sentido para a sua marca, a melhor porta de entrada e o WhatsApp. A partir
+                dali alinhamos briefing, contexto, escopo e o melhor formato de projeto.
               </p>
 
-              <div className="contact-cards">
-                {contactInfo.map((item) => (
-                  <article key={item.label} className="contact-card">
-                    <span>{item.label}</span>
+              <div className="contact-actions">
+                <a
+                  className="contact-action contact-action--primary"
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
+                >
+                  Chamar no WhatsApp
+                </a>
+                <a className="contact-action contact-action--secondary" href="#services">
+                  Ver servicos
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-rail">
+              <article className="contact-band contact-band--primary">
+                <span className="contact-band__eyebrow">Canal principal</span>
+                <strong>{whatsappDisplay}</strong>
+                <p>
+                  Atendimento comercial da Brand Safari para novos projetos, campanhas e
+                  reposicionamentos de marca.
+                </p>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Abrir WhatsApp para ${whatsappDisplay}`}
+                >
+                  Vamos conversar
+                </a>
+              </article>
+
+              <div className="contact-band-list">
+                {contactInfo.slice(1).map((item) => (
+                  <article key={item.label} className="contact-band">
+                    <span className="contact-band__eyebrow">{item.label}</span>
                     <strong>{item.value}</strong>
+                    <p>{item.description}</p>
+                    {item.href ? <a href={item.href}>{item.cta}</a> : <span className="contact-band__meta">Brand Safari</span>}
                   </article>
                 ))}
               </div>
             </div>
-
-            <form className="contact-form">
-              <label>
-                Nome
-                <input type="text" placeholder="Seu nome" />
-              </label>
-
-              <label>
-                Empresa
-                <input type="text" placeholder="Sua empresa ou marca" />
-              </label>
-
-              <label>
-                O que voce precisa
-                <textarea
-                  rows="6"
-                  placeholder="Fale sobre branding, campanha, redesign, performance ou um projeto integrado."
-                />
-              </label>
-
-              <a
-                className="contact-form__cta"
-                href={whatsappHref}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Enviar mensagem no WhatsApp para ${whatsappDisplay}`}
-              >
-                Chamar no WhatsApp
-              </a>
-            </form>
           </div>
         </section>
       </main>

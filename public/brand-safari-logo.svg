@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 360" fill="none">
+  <g
+    stroke="#111111"
+    stroke-width="22"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <g transform="translate(28 30)">
+      <path d="M18 12V150" />
+      <path d="M18 12H58C82 12 96 26 96 50C96 74 82 88 58 88H18" />
+      <path d="M18 88H62C88 88 102 102 102 126C102 150 88 164 62 164H18" />
+    </g>
+
+    <g transform="translate(176 30)">
+      <path d="M18 12V164" />
+      <path d="M18 12H58C84 12 98 28 98 58C98 88 84 104 58 104H18" />
+      <path d="M62 104L102 164" />
+    </g>
+
+    <g transform="translate(328 30)">
+      <path d="M18 164L58 12L98 164" />
+      <path d="M34 106H82" />
+    </g>
+
+    <g transform="translate(474 30)">
+      <path d="M18 164V12L98 164V12" />
+    </g>
+
+    <g transform="translate(620 30)">
+      <path d="M18 12V164" />
+      <path d="M18 12H54C88 12 104 38 104 88C104 138 88 164 54 164H18" />
+    </g>
+
+    <g transform="translate(18 188)">
+      <path d="M92 28C78 16 64 12 48 12C24 12 14 28 14 50C14 72 28 86 52 86H64C90 86 104 100 104 124C104 148 88 164 56 164C40 164 24 158 12 146" />
+    </g>
+
+    <g transform="translate(146 188)">
+      <path d="M18 164L58 12L98 164" />
+      <path d="M34 106H82" />
+    </g>
+
+    <g transform="translate(294 188)">
+      <path d="M18 164V12H98" />
+      <path d="M18 92H78" />
+    </g>
+
+    <g transform="translate(432 188)">
+      <path d="M18 164L58 12L98 164" />
+      <path d="M34 106H82" />
+    </g>
+
+    <g transform="translate(578 188)">
+      <path d="M18 12V164" />
+      <path d="M18 12H58C84 12 98 28 98 58C98 88 84 104 58 104H18" />
+      <path d="M62 104L102 164" />
+    </g>
+
+    <g transform="translate(728 188)">
+      <path d="M18 12V164" />
+    </g>
+  </g>
+</svg>

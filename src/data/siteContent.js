@@ -205,8 +205,23 @@ export const connections = [
 ];
 
 export const contactInfo = [
-  { label: "Novos negocios", value: "comercial@brandsafari.studio" },
-  { label: "Whatsapp", value: whatsappDisplay },
-  { label: "Instagram", value: "@brandsafari.studio" },
-  { label: "Base", value: "Curitiba, atendimento remoto e presencial" },
+  {
+    label: "WhatsApp",
+    value: whatsappDisplay,
+    description: "Canal principal para briefing, novos negocios e alinhamento inicial.",
+    cta: "Abrir conversa",
+    href: whatsappHref,
+  },
+  {
+    label: "Base",
+    value: "Curitiba, PR",
+    description: "Atendimento remoto e presencial, com projetos em outras cidades mediante agenda.",
+  },
+  {
+    label: "Escopo",
+    value: "Branding, campanhas, conteudo e performance",
+    description: "Projetos autorais, direcao criativa, operacao e lancamentos integrados.",
+    cta: "Ver servicos",
+    href: "#services",
+  },
 ];
