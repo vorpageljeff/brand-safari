@@ -49,6 +49,7 @@ function WhatsAppIcon() {
 export default function App() {
   const [activeProductId, setActiveProductId] = useState(products[0].id);
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -56,6 +57,18 @@ export default function App() {
     }, 4200);
 
     return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 860) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const activeProduct =
@@ -81,6 +94,19 @@ export default function App() {
             </div>
           </div>
 
+          <button
+            type="button"
+            className={isMobileMenuOpen ? "site-header__menu-toggle is-open" : "site-header__menu-toggle"}
+            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsMobileMenuOpen((current) => !current)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
           <div className="site-header__meta">
             <div className="connection-strip">
               <span>Conexoes</span>
@@ -102,6 +128,42 @@ export default function App() {
             href={whatsappHref}
             target="_blank"
             rel="noreferrer"
+            aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
+          >
+            Vamos conversar
+          </a>
+        </div>
+
+        <div
+          id="mobile-navigation"
+          className={
+            isMobileMenuOpen ? "content-wrap site-header__mobile-panel is-open" : "content-wrap site-header__mobile-panel"
+          }
+        >
+          <nav className="site-header__mobile-nav" aria-label="Navegacao mobile">
+            {navigation.map((item) => (
+              <a key={item.href} href={item.href} onClick={() => setIsMobileMenuOpen(false)}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="site-header__mobile-links">
+            <span>Conexoes</span>
+            <a href="#connections" onClick={() => setIsMobileMenuOpen(false)}>
+              Safari Labs
+            </a>
+            <a href="#connections" onClick={() => setIsMobileMenuOpen(false)}>
+              Motion House
+            </a>
+          </div>
+
+          <a
+            className="site-header__mobile-cta"
+            href={whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
             aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
           >
             Vamos conversar
