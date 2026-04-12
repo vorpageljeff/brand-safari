@@ -2492,3 +2492,35 @@ body::before {
     width: 9.6rem;
   }
 }
+
+/* Full-bleed hero carousel */
+
+.site-shell .hero-showcase {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0 calc(50% - 50vw);
+}
+
+.site-shell .hero-carousel {
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+@media (max-width: 1080px) {
+  .site-shell .hero-showcase {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+  }
+}
+
+@media (max-width: 860px) {
+  .site-shell .hero-showcase {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+  }
+
+  .site-shell .hero-carousel {
+    border-radius: 0;
+  }
+}
