@@ -26,37 +26,22 @@ def fit_cover(image: Image.Image, size: tuple[int, int]) -> Image.Image:
     return resized.crop((left, top, left + target_w, top + target_h))
 
 
-def fit_contain(image: Image.Image, size: tuple[int, int]) -> Image.Image:
-    target_w, target_h = size
-    scale = min(target_w / image.width, target_h / image.height)
-    return image.resize((int(image.width * scale), int(image.height * scale)), Image.LANCZOS)
-
-
 def stylize_frame(frame: np.ndarray) -> Image.Image:
     source = Image.fromarray(frame).convert("RGB")
+    cover = fit_cover(source, (WIDTH, HEIGHT))
+    cover = ImageEnhance.Brightness(cover).enhance(0.94)
+    cover = ImageEnhance.Color(cover).enhance(1.08)
+    cover = ImageEnhance.Contrast(cover).enhance(1.04)
 
-    background = fit_cover(source, (WIDTH, HEIGHT))
-    background = background.filter(ImageFilter.GaussianBlur(36))
-    background = ImageEnhance.Brightness(background).enhance(0.72)
-    background = ImageEnhance.Color(background).enhance(0.92)
+    light_pass = Image.new("RGBA", (WIDTH, HEIGHT), (255, 255, 255, 0))
+    flare = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
+    flare_draw = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
+    flare_draw.paste((255, 255, 255, 24), (0, 0, WIDTH, HEIGHT))
+    flare = flare_draw.filter(ImageFilter.GaussianBlur(42))
 
-    foreground = fit_contain(source, (700, 780))
-    foreground = ImageEnhance.Brightness(foreground).enhance(0.98)
-    foreground = ImageEnhance.Color(foreground).enhance(1.04)
-
-    canvas = background.convert("RGBA")
-
-    glow = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
-    glow_fg = foreground.copy().convert("RGBA")
-    alpha = Image.new("L", glow_fg.size, 0)
-    alpha.paste(190, (0, 0, glow_fg.width, glow_fg.height))
-    glow_fg.putalpha(alpha)
-    glow_fg = glow_fg.filter(ImageFilter.GaussianBlur(26))
-    glow.alpha_composite(glow_fg, ((WIDTH - foreground.width) // 2, (HEIGHT - foreground.height) // 2))
-    canvas = Image.alpha_composite(canvas, glow)
-
-    frame_rgba = foreground.convert("RGBA")
-    canvas.alpha_composite(frame_rgba, ((WIDTH - foreground.width) // 2, (HEIGHT - foreground.height) // 2))
+    canvas = Image.alpha_composite(cover.convert("RGBA"), flare)
+    light_pass = light_pass.filter(ImageFilter.GaussianBlur(0))
+    canvas = Image.alpha_composite(canvas, light_pass)
 
     return canvas.convert("RGB")
 

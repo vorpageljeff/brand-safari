@@ -28,17 +28,15 @@ export const heroContent = {
 };
 
 export const heroVideo = {
-  label: "Brand motion",
   src: "/brand-safari-home-hero.mp4",
   poster: "/brand-safari-home-hero-poster.png",
 };
 
 export const aboutContent = {
-  eyebrow: "Sobre",
-  title: "Para construir sua marca.",
-  description:
-    "Para construir sua marca, seja uma empresa, marca pessoal ou produto, a Brand Safari desenvolve um planejamento de comunicacao baseado em analise de mercado, diagnostico do negocio e posicionamento de marca.",
-  complementaryText: "O resultado e um plano de acao claro. E clareza gera crescimento.",
+  eyebrow: "Subheadline",
+  title: "O que torna sua marca unica e o que faz ela crescer.",
+  description: "A Brand Safari estrutura esse caminho, do posicionamento ao plano de comunicacao.",
+  complementaryText: "",
 };
 
 export const serviceSection = {

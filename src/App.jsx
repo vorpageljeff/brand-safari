@@ -212,10 +212,6 @@ export default function App() {
               />
               <div className="hero-carousel__overlay" />
               <div className="hero-carousel__pulse" />
-
-              <div className="hero-carousel__top">
-                <span>{heroVideo.label}</span>
-              </div>
             </div>
           </div>
 
@@ -247,9 +243,11 @@ export default function App() {
               description={aboutContent.description}
             />
 
-            <div className="about-band__copy">
-              <p>{aboutContent.complementaryText}</p>
-            </div>
+            {aboutContent.complementaryText ? (
+              <div className="about-band__copy">
+                <p>{aboutContent.complementaryText}</p>
+              </div>
+            ) : null}
           </div>
         </section>
 
