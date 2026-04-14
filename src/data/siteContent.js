@@ -1,20 +1,30 @@
 export const navigation = [
   { label: "Sobre", href: "#about" },
-  { label: "Portfolio", href: "#portfolio" },
   { label: "Servicos", href: "#services" },
-  { label: "Reconhecimentos", href: "#recognitions" },
-  { label: "Depoimentos", href: "#testimonials" },
   { label: "Contato", href: "#contact" },
 ];
 
-export const whatsappDisplay = "(45) 99127-8585";
-export const whatsappHref =
-  "https://wa.me/5545991278585?text=Oi%2C%20vim%20pelo%20site%20da%20Brand%20Safari%20e%20gostaria%20de%20conversar.";
+export const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/brandsafari.studio/",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@brand.safari",
+  },
+];
+
+export const contactEmail = "studiobrandsafari@gmail.com";
+export const contactEmailHref = `mailto:${contactEmail}`;
+export const contactLocation = "Cascavel, PR";
+export const contactCompany = "Brand Safari";
+export const contactFormEndpoint = `https://formsubmit.co/ajax/${contactEmail}`;
 
 export const heroContent = {
   title: "Marcas sao construidas com analise, estrategia e um caminho claro para crescer.",
   subtitle: "Estudio de Branding",
-  ctaLabel: "Vamos conversar",
+  ctaLabel: "Preencher formulario",
 };
 
 export const heroVideo = {
@@ -67,8 +77,8 @@ export const serviceDetails = [
 export const contactSection = {
   eyebrow: "Contato",
   title: "Pronto para construir sua marca?",
-  description: "Vamos conversar sobre a sua marca.",
-  ctaLabel: "Entra em contato",
+  description: "Preencha o formulario e a Brand Safari retorna com os proximos passos para a sua marca.",
+  ctaLabel: "Ir para o formulario",
 };
 
 export const heroImages = [
@@ -253,24 +263,27 @@ export const connections = [
   },
 ];
 
-export const contactInfo = [
+export const contactFormFields = [
   {
-    label: "WhatsApp",
-    value: whatsappDisplay,
-    description: "Canal principal para briefing, novos negocios e alinhamento inicial.",
-    cta: "Abrir conversa",
-    href: whatsappHref,
+    id: "name",
+    name: "name",
+    label: "Nome",
+    type: "text",
+    placeholder: "Seu nome",
+    autoComplete: "name",
   },
   {
-    label: "Base",
-    value: "Curitiba, PR",
-    description: "Atendimento remoto e presencial, com projetos em outras cidades mediante agenda.",
+    id: "phone",
+    name: "phone",
+    label: "Numero para contato",
+    type: "tel",
+    placeholder: "(00) 00000-0000",
+    autoComplete: "tel",
   },
   {
-    label: "Escopo",
-    value: "Branding, campanhas, conteudo e performance",
-    description: "Projetos autorais, direcao criativa, operacao e lancamentos integrados.",
-    cta: "Ver servicos",
-    href: "#services",
+    id: "message",
+    name: "message",
+    label: "Do que se trata",
+    placeholder: "Conte brevemente sobre a sua marca, desafio ou projeto.",
   },
 ];

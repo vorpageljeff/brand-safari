@@ -3,18 +3,22 @@ import {
   aboutContent,
   awards,
   connections,
+  contactCompany,
+  contactEmail,
+  contactEmailHref,
+  contactFormEndpoint,
+  contactFormFields,
+  contactLocation,
   contactSection,
-  contactInfo,
   heroContent,
   heroVideo,
   navigation,
   portfolioProjects,
   serviceDetails,
   serviceSection,
+  socialLinks,
   testimonials,
   values,
-  whatsappDisplay,
-  whatsappHref,
 } from "./data/siteContent";
 import BrandSafariLogo from "./components/BrandSafariLogo";
 
@@ -28,11 +32,22 @@ function SectionIntro({ eyebrow, title, description }) {
   );
 }
 
-function WhatsAppIcon() {
+function InstagramIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path
-        d="M12 2.2a9.62 9.62 0 0 0-8.3 14.46L2.3 21.7l5.16-1.34A9.63 9.63 0 1 0 12 2.2Zm0 17.42a7.76 7.76 0 0 1-3.95-1.08l-.28-.16-3.06.8.82-2.98-.18-.3A7.76 7.76 0 1 1 12 19.62Zm4.26-5.8c-.23-.11-1.37-.67-1.58-.75-.21-.08-.36-.11-.51.12-.15.23-.59.75-.72.91-.13.15-.26.17-.49.06-.23-.11-.96-.35-1.82-1.12-.67-.6-1.13-1.34-1.26-1.57-.13-.23-.01-.36.1-.47.1-.1.23-.26.34-.39.11-.13.15-.23.23-.38.08-.15.04-.29-.02-.4-.06-.11-.51-1.23-.7-1.69-.18-.43-.37-.37-.51-.38h-.43c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9 0 1.12.82 2.2.93 2.35.11.15 1.6 2.45 3.89 3.44.54.23.96.37 1.29.48.54.17 1.03.15 1.42.09.43-.06 1.37-.56 1.56-1.09.19-.53.19-.98.13-1.08-.05-.1-.2-.16-.43-.27Z"
+        d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm0 2.2A1.8 1.8 0 0 0 5.2 7v10A1.8 1.8 0 0 0 7 18.8h10a1.8 1.8 0 0 0 1.8-1.8V7A1.8 1.8 0 0 0 17 5.2H7Zm10.35 1.3a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7.3A4.7 4.7 0 1 1 7.3 12 4.7 4.7 0 0 1 12 7.3Zm0 2.2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function TikTokIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        d="M14.8 3c.35 1.9 1.48 3.1 3.2 3.45v2.32a6.4 6.4 0 0 1-3.02-1V14.6a5.47 5.47 0 1 1-5.47-5.47c.35 0 .67.03.98.1v2.37a3.18 3.18 0 0 0-.98-.15 3.15 3.15 0 1 0 3.15 3.15V3h2.13Z"
         fill="currentColor"
       />
     </svg>
@@ -41,6 +56,10 @@ function WhatsAppIcon() {
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [formState, setFormState] = useState({
+    status: "idle",
+    message: "",
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,16 +73,49 @@ export default function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handleContactSubmit = async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setFormState({
+      status: "sending",
+      message: "Enviando seu contato...",
+    });
+
+    try {
+      const response = await fetch(contactFormEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Nao foi possivel enviar o formulario.");
+      }
+
+      form.reset();
+      setFormState({
+        status: "success",
+        message: "Contato enviado com sucesso. A Brand Safari recebe isso no email e retorna em breve.",
+      });
+    } catch (error) {
+      setFormState({
+        status: "error",
+        message: "Nao foi possivel enviar agora. Tente novamente em alguns instantes ou use o email exibido ao lado.",
+      });
+    }
+  };
+
   return (
     <div className="site-shell">
       <header className="site-header">
         <div className="content-wrap site-header__inner">
           <div className="brand-lockup">
             <BrandSafariLogo className="brand-logo--header" />
-
-            <div className="brand-lockup__meta">
-              <span>creative company</span>
-            </div>
           </div>
 
           <button
@@ -80,12 +132,6 @@ export default function App() {
           </button>
 
           <div className="site-header__meta">
-            <div className="connection-strip">
-              <span>Conexoes</span>
-              <a href="#connections">Safari Labs</a>
-              <a href="#connections">Motion House</a>
-            </div>
-
             <nav className="site-nav" aria-label="Navegacao principal">
               {navigation.map((item) => (
                 <a key={item.href} href={item.href}>
@@ -95,15 +141,24 @@ export default function App() {
             </nav>
           </div>
 
-          <a
-            className="header-cta"
-            href={whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
-          >
-            Vamos conversar
-          </a>
+          <div className="site-header__actions">
+            <div className="social-strip" aria-label="Redes sociais">
+              <a href={socialLinks[0].href} target="_blank" rel="noreferrer" aria-label="Instagram Brand Safari">
+                <InstagramIcon />
+              </a>
+              <a href={socialLinks[1].href} target="_blank" rel="noreferrer" aria-label="TikTok Brand Safari">
+                <TikTokIcon />
+              </a>
+            </div>
+
+            <a
+              className="header-cta"
+              href="#contact-form"
+              aria-label="Ir para o formulario de contato"
+            >
+              Entrar em contato
+            </a>
+          </div>
         </div>
 
         <div
@@ -121,24 +176,22 @@ export default function App() {
           </nav>
 
           <div className="site-header__mobile-links">
-            <span>Conexoes</span>
-            <a href="#connections" onClick={() => setIsMobileMenuOpen(false)}>
-              Safari Labs
+            <span>Redes</span>
+            <a href={socialLinks[0].href} target="_blank" rel="noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
+              Instagram
             </a>
-            <a href="#connections" onClick={() => setIsMobileMenuOpen(false)}>
-              Motion House
+            <a href={socialLinks[1].href} target="_blank" rel="noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
+              TikTok
             </a>
           </div>
 
           <a
             className="site-header__mobile-cta"
-            href={whatsappHref}
-            target="_blank"
-            rel="noreferrer"
+            href="#contact-form"
             onClick={() => setIsMobileMenuOpen(false)}
-            aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
+            aria-label="Ir para o formulario de contato"
           >
-            Vamos conversar
+            Entrar em contato
           </a>
         </div>
       </header>
@@ -177,10 +230,8 @@ export default function App() {
                 <div className="hero-actions">
                   <a
                     className="hero-button hero-button--primary"
-                    href={whatsappHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
+                    href="#contact-form"
+                    aria-label="Ir para o formulario de contato"
                   >
                     {heroContent.ctaLabel}
                   </a>
@@ -344,70 +395,109 @@ export default function App() {
         </section>
 
         <section className="contact-section" id="contact">
-          <div className="content-wrap contact-shell">
-            <div className="contact-lead">
-              <span className="eyebrow">{contactSection.eyebrow}</span>
-              <h2>{contactSection.title}</h2>
-              <p>{contactSection.description}</p>
+          <div className="content-wrap">
+            <div className="contact-surface">
+              <div className="contact-summary">
+                <span className="eyebrow">{contactSection.eyebrow}</span>
+                <h2>{contactSection.title}</h2>
+                <p>{contactSection.description}</p>
 
-              <div className="contact-actions">
-                <a
-                  className="contact-action contact-action--primary"
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Conversar no WhatsApp pelo numero ${whatsappDisplay}`}
-                >
-                  {contactSection.ctaLabel}
-                </a>
+                <div className="contact-summary__details">
+                  <div className="contact-summary__item">
+                    <span>Empresa</span>
+                    <strong>{contactCompany}</strong>
+                  </div>
+                  <div className="contact-summary__item">
+                    <span>Localizacao</span>
+                    <strong>{contactLocation}</strong>
+                  </div>
+                  <div className="contact-summary__item">
+                    <span>Email</span>
+                    <a href={contactEmailHref}>{contactEmail}</a>
+                  </div>
+                </div>
+
+                <div className="contact-summary__links">
+                  <a href={socialLinks[0].href} target="_blank" rel="noreferrer">
+                    Instagram
+                  </a>
+                  <a href={socialLinks[1].href} target="_blank" rel="noreferrer">
+                    TikTok
+                  </a>
+                </div>
+
+                <div className="contact-actions">
+                  <a
+                    className="contact-action contact-action--primary"
+                    href="#contact-form"
+                    aria-label="Ir para o formulario de contato"
+                  >
+                    {contactSection.ctaLabel}
+                  </a>
+                </div>
               </div>
-            </div>
 
-            <div className="contact-rail">
-              <article className="contact-band contact-band--primary">
-                <span className="contact-band__eyebrow">Canal principal</span>
-                <strong>{whatsappDisplay}</strong>
+              <div className="contact-form-card" id="contact-form">
+                <span className="contact-form-card__eyebrow">Formulario</span>
+                <h3>Conte sobre a sua marca</h3>
                 <p>
-                  Atendimento comercial da Brand Safari para novos projetos, campanhas e
-                  reposicionamentos de marca.
+                  Preencha os dados abaixo e a Brand Safari recebe esse contato direto no email.
                 </p>
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Abrir WhatsApp para ${whatsappDisplay}`}
-                >
-                  Vamos conversar
-                </a>
-              </article>
 
-              <div className="contact-band-list">
-                {contactInfo.slice(1).map((item) => (
-                  <article key={item.label} className="contact-band">
-                    <span className="contact-band__eyebrow">{item.label}</span>
-                    <strong>{item.value}</strong>
-                    <p>{item.description}</p>
-                    {item.href ? <a href={item.href}>{item.cta}</a> : <span className="contact-band__meta">Brand Safari</span>}
-                  </article>
-                ))}
+                <form className="contact-form contact-form--surface" onSubmit={handleContactSubmit}>
+                  <input type="hidden" name="_subject" value="Novo contato pelo site da Brand Safari" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="text" name="_honey" className="contact-form__honeypot" tabIndex="-1" autoComplete="off" />
+
+                  {contactFormFields.map((field) => (
+                    <label key={field.id} htmlFor={field.id}>
+                      <span>{field.label}</span>
+                      {field.name === "message" ? (
+                        <textarea
+                          id={field.id}
+                          name={field.name}
+                          placeholder={field.placeholder}
+                          required
+                        />
+                      ) : (
+                        <input
+                          id={field.id}
+                          name={field.name}
+                          type={field.type}
+                          placeholder={field.placeholder}
+                          autoComplete={field.autoComplete}
+                          required
+                        />
+                      )}
+                    </label>
+                  ))}
+
+                  <button type="submit" disabled={formState.status === "sending"}>
+                    {formState.status === "sending" ? "Enviando..." : "Enviar contato"}
+                  </button>
+
+                  {formState.message ? (
+                    <p
+                      className={
+                        formState.status === "success"
+                          ? "contact-form__status is-success"
+                          : formState.status === "error"
+                            ? "contact-form__status is-error"
+                            : "contact-form__status"
+                      }
+                      role="status"
+                      aria-live="polite"
+                    >
+                      {formState.message}
+                    </p>
+                  ) : null}
+                </form>
               </div>
             </div>
           </div>
         </section>
       </main>
-
-      <a
-        className="whatsapp-float"
-        href={whatsappHref}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`Abrir WhatsApp para conversar com ${whatsappDisplay}`}
-      >
-        <span className="whatsapp-float__icon">
-          <WhatsAppIcon />
-        </span>
-        <span className="whatsapp-float__label">WhatsApp</span>
-      </a>
     </div>
   );
 }
