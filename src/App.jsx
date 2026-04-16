@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   aboutContent,
-  awards,
-  connections,
   contactCompany,
   contactEmail,
   contactEmailHref,
@@ -17,16 +15,29 @@ import {
   serviceDetails,
   serviceSection,
   socialLinks,
-  testimonials,
-  values,
 } from "./data/siteContent";
 import BrandSafariLogo from "./components/BrandSafariLogo";
 
 function SectionIntro({ eyebrow, title, description }) {
+  const titleLines = title ? title.split("\n") : [];
+
   return (
     <div className="section-intro">
-      <span>{eyebrow}</span>
-      <h2>{title}</h2>
+      {eyebrow ? <span>{eyebrow}</span> : null}
+      {title ? (
+        <h2>
+          {titleLines.length > 1
+            ? titleLines.map((line, index) => (
+                <span
+                  key={`${line}-${index}`}
+                  className={index === 0 ? "section-intro__line section-intro__line--first" : "section-intro__line"}
+                >
+                  {line}
+                </span>
+              ))
+            : title}
+        </h2>
+      ) : null}
       {description ? <p>{description}</p> : null}
     </div>
   );
@@ -56,6 +67,7 @@ function TikTokIcon() {
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openServiceIndex, setOpenServiceIndex] = useState(-1);
   const [formState, setFormState] = useState({
     status: "idle",
     message: "",
@@ -150,14 +162,6 @@ export default function App() {
                 <TikTokIcon />
               </a>
             </div>
-
-            <a
-              className="header-cta"
-              href="#contact-form"
-              aria-label="Ir para o formulario de contato"
-            >
-              Entrar em contato
-            </a>
           </div>
         </div>
 
@@ -185,14 +189,6 @@ export default function App() {
             </a>
           </div>
 
-          <a
-            className="site-header__mobile-cta"
-            href="#contact-form"
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-label="Ir para o formulario de contato"
-          >
-            Entrar em contato
-          </a>
         </div>
       </header>
 
@@ -218,20 +214,8 @@ export default function App() {
           <div className="content-wrap hero-intro">
             <div className="hero-topline">
               <div className="hero-copy">
-                <span className="eyebrow">{heroContent.subtitle}</span>
-                <h1>{heroContent.title}</h1>
-              </div>
-
-              <div className="hero-support">
-                <div className="hero-actions">
-                  <a
-                    className="hero-button hero-button--primary"
-                    href="#contact-form"
-                    aria-label="Ir para o formulario de contato"
-                  >
-                    {heroContent.ctaLabel}
-                  </a>
-                </div>
+                {heroContent.subtitle ? <span className="eyebrow">{heroContent.subtitle}</span> : null}
+                {heroContent.title ? <h1>{heroContent.title}</h1> : null}
               </div>
             </div>
           </div>
@@ -249,13 +233,68 @@ export default function App() {
               </div>
             ) : null}
           </div>
+
+          {heroContent.ctaLabel ? (
+            <div className="content-wrap midway-cta-wrap">
+              <a className="midway-cta" href="#contact">
+                {heroContent.ctaLabel}
+              </a>
+            </div>
+          ) : null}
+        </section>
+
+        <section className="content-wrap content-section" id="services">
+          <SectionIntro
+            eyebrow={serviceSection.eyebrow}
+            title={serviceSection.title}
+            description={serviceSection.description}
+          />
+
+          <div className="service-accordion">
+            {serviceDetails.map((service, index) => {
+              const isOpen = openServiceIndex === index;
+
+              return (
+                <article
+                  key={service.title}
+                  className={isOpen ? "service-accordion__item is-open" : "service-accordion__item"}
+                >
+                  <button
+                    type="button"
+                    className="service-accordion__trigger"
+                    onClick={() => setOpenServiceIndex((current) => (current === index ? -1 : index))}
+                    aria-expanded={isOpen}
+                    aria-controls={`service-panel-${index}`}
+                  >
+                    <span>{service.title}</span>
+                    <span className="service-accordion__icon" aria-hidden="true">
+                      <span className="service-accordion__icon-line service-accordion__icon-line--horizontal" />
+                      <span className="service-accordion__icon-line service-accordion__icon-line--vertical" />
+                    </span>
+                  </button>
+
+                  <div
+                    id={`service-panel-${index}`}
+                    className={isOpen ? "service-accordion__panel is-open" : "service-accordion__panel"}
+                    aria-hidden={!isOpen}
+                  >
+                    <div className="service-accordion__panel-inner">
+                      {service.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </section>
 
         <section className="content-wrap content-section" id="portfolio">
           <SectionIntro
             eyebrow="Portfolio"
             title="Cases em destaque"
-            description="Mantive o clima de vitrine editorial da referencia, com cards grandes, categorias visiveis e leitura mais de agencia do que de landing comum."
+            description="Uma seleção dos formatos de projeto que a Brand Safari constrói para posicionar, comunicar e expandir marcas."
           />
 
           <div className="portfolio-grid">
@@ -286,111 +325,11 @@ export default function App() {
           </a>
         </section>
 
-        <section className="content-wrap content-section" id="services">
-          <SectionIntro
-            eyebrow={serviceSection.eyebrow}
-            title={serviceSection.title}
-          />
+        {/* Section hidden for now: Nosso jeito */}
 
-          <div className="service-detail-list">
-            {serviceDetails.map((service) => (
-              <article key={service.title} className="service-detail">
-                <span className="service-detail__eyebrow">Servico</span>
-                <h3>{service.title}</h3>
-                <div className="service-detail__copy">
-                  {service.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        {/* Section hidden for now: Premios e relevancia */}
 
-        <section className="value-section">
-          <div className="content-wrap">
-            <SectionIntro
-              eyebrow="Nosso jeito"
-              title="Todo job precisa de inteligencia, criatividade e performance"
-              description="Essa parte copia a cadencia da referencia: tres blocos fortes, cada um com uma ideia central, imagem e texto manifesto."
-            />
-
-            <div className="value-list">
-              {values.map((item) => (
-                <article key={item.title} className="value-card">
-                  <div className="value-card__copy">
-                    <span>{item.eyebrow}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </div>
-
-                  <div className="value-card__image">
-                    <img src={item.image} alt={item.title} />
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="content-wrap content-section" id="recognitions">
-          <SectionIntro
-            eyebrow="Reconhecimentos"
-            title="Premios e relevancia"
-            description="Troquei os blocos generricos por uma grade mais proxima da pagina de referencia, com foco em premiacoes e selos de autoridade."
-          />
-
-          <div className="awards-grid">
-            {awards.map((award) => (
-              <article key={award.title} className="award-card">
-                <strong>{award.title}</strong>
-                <p>{award.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="testimonial-section" id="testimonials">
-          <div className="content-wrap">
-            <SectionIntro
-              eyebrow="Depoimentos"
-              title="Parcerias que falam pela marca"
-              description="Mantive a logica de depoimentos mais longos e com cara de relacao real entre cliente e agencia."
-            />
-
-            <div className="testimonials-grid">
-              {testimonials.map((item) => (
-                <article key={item.author} className="testimonial-card">
-                  <p>{item.quote}</p>
-
-                  <div>
-                    <strong>{item.author}</strong>
-                    <span>{item.role}</span>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="content-wrap content-section" id="connections">
-          <SectionIntro
-            eyebrow="Conexoes"
-            title="Nucleos parceiros"
-            description="A referencia usa marcas irmas para ampliar a oferta. Modelei a mesma ideia aqui com duas frentes complementares."
-          />
-
-          <div className="connections-grid">
-            {connections.map((item) => (
-              <article key={item.name} className="connection-card">
-                <span>{item.category}</span>
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
-                <a href={item.href}>{item.cta}</a>
-              </article>
-            ))}
-          </div>
-        </section>
+        {/* Section hidden for now: Conexoes */}
 
         <section className="contact-section" id="contact">
           <div className="content-wrap">

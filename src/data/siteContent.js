@@ -1,6 +1,6 @@
 export const navigation = [
   { label: "Sobre", href: "#about" },
-  { label: "Servicos", href: "#services" },
+  { label: "Serviços", href: "#services" },
   { label: "Contato", href: "#contact" },
 ];
 
@@ -22,9 +22,9 @@ export const contactCompany = "Brand Safari";
 export const contactFormEndpoint = `https://formsubmit.co/ajax/${contactEmail}`;
 
 export const heroContent = {
-  title: "Marcas sao construidas com analise, estrategia e um caminho claro para crescer.",
-  subtitle: "Estudio de Branding",
-  ctaLabel: "Preencher formulario",
+  title: "",
+  subtitle: "Estúdio de Branding",
+  ctaLabel: "Preencher formulário",
 };
 
 export const heroVideo = {
@@ -33,15 +33,18 @@ export const heroVideo = {
 };
 
 export const aboutContent = {
-  eyebrow: "Subheadline",
-  title: "O que torna sua marca unica e o que faz ela crescer.",
-  description: "A Brand Safari estrutura esse caminho, do posicionamento ao plano de comunicacao.",
-  complementaryText: "",
+  eyebrow: "",
+  title: "O que torna sua marca única\né o que faz ela crescer.",
+  description: "A Brand Safari é um estúdio de branding que estrutura esse caminho, do posicionamento ao plano de comunicação.",
+  complementaryText:
+    "O trabalho combina diagnóstico, direção estratégica e conteúdo para transformar marca em um sistema claro de expressão, decisão e crescimento.",
 };
 
 export const serviceSection = {
-  eyebrow: "Servicos",
+  eyebrow: "Serviços",
   title: "Como trabalhamos",
+  description:
+    "Da consultoria ao lançamento, cada frente organiza estratégia, comunicação e execução de acordo com o momento da marca.",
 };
 
 export const serviceDetails = [
