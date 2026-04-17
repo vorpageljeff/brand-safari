@@ -51,26 +51,26 @@ export const serviceDetails = [
   {
     title: "Consultoria de Marca",
     paragraphs: [
-      "Para quem quer construir ou reposicionar a marca com estrutura e direcao. A partir do diagnostico do negocio, desenvolvemos o posicionamento e um plano de comunicacao pronto para executar.",
-      "Para quem precisa avancar em uma etapa especifica, a consultoria tambem acontece em projetos pontuais: diagnostico de marca, DNA ou plano de comunicacao com escopo e prazo definidos.",
+      "Para quem quer construir ou reposicionar a marca com estrutura e direção. A partir do diagnóstico do negócio, desenvolvemos o posicionamento e um plano de comunicação pronto para executar.",
+      "Para quem precisa avançar em uma etapa específica, a consultoria também acontece em projetos pontuais: diagnóstico de marca, DNA ou plano de comunicação com escopo e prazo definidos.",
     ],
   },
   {
     title: "Mentoria",
     paragraphs: [
-      "Individual ou em grupo. Para quem quer construir a propria marca com autonomia e acompanhamento proximo em cada etapa.",
+      "Individual ou em grupo. Para quem quer construir a própria marca com autonomia e acompanhamento próximo em cada etapa.",
     ],
   },
   {
-    title: "Conteudo de Marca",
+    title: "Conteúdo de Marca",
     paragraphs: [
-      "Para quem quer terceirizar a producao de conteudo com estrategia. Planejamento, criacao e gestao de midias sociais.",
+      "Para quem quer terceirizar a produção de conteúdo com estratégia. Planejamento, criação e gestão de mídias sociais.",
     ],
   },
   {
-    title: "Lancamento de Infoproduto",
+    title: "Lançamento de Infoproduto",
     paragraphs: [
-      "Da ideia ao lancamento. Posicionamento, estrutura e plano de comunicacao para quem quer lancar um produto digital com base solida.",
+      "Da ideia ao lançamento. Posicionamento, estrutura e plano de comunicação para quem quer lançar um produto digital com base sólida.",
     ],
   },
 ];
@@ -78,8 +78,8 @@ export const serviceDetails = [
 export const contactSection = {
   eyebrow: "Contato",
   title: "Pronto para construir sua marca?",
-  description: "Preencha o formulario e a Brand Safari retorna com os proximos passos para a sua marca.",
-  ctaLabel: "Ir para o formulario",
+  description: "Preencha o formulário e a Brand Safari retorna com os próximos passos para a sua marca.",
+  ctaLabel: "Ir para o formulário",
 };
 
 export const heroImages = [
@@ -91,25 +91,29 @@ export const heroImages = [
 
 export const portfolioProjects = [
   {
-    client: "Solare",
-    title: "Reposicionamento premium com campanha integrada",
-    tags: ["Campanha", "Publicidade"],
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    client: "Reposicionamento",
+    title: "Reposicionamento de marca com direção clara",
+    summary:
+      "A Brand Safari ajuda a reposicionar marcas com diagnóstico, definição de posicionamento e um plano de comunicação mais coerente com o momento do negócio.",
+    tags: ["Branding", "Posicionamento", "Comunicação"],
+    image: "https://unsplash.com/photos/3tCLyPBSQ5k/download?force=true&w=1200",
   },
   {
-    client: "Nexa Foods",
-    title: "Branded content para novo ciclo de crescimento",
-    tags: ["Branding", "Conteudo", "Digital"],
+    client: "Infoproduto",
+    title: "Infoprodutos com estrutura e lançamento",
+    summary:
+      "Da ideia ao lançamento, ela auxilia a criar infoprodutos com proposta bem definida, narrativa forte e uma base estratégica para vender com mais clareza.",
+    tags: ["Infoproduto", "Lançamento", "Estratégia"],
     image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1765894103922-8478553b8bf2?ixlib=rb-4.1.0&auto=format&fit=crop&w=1200&q=80",
   },
   {
-    client: "Atmo",
-    title: "Campanha de awareness com narrativa multiplataforma",
-    tags: ["Campanha", "Performance"],
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    client: "Marca + conteúdo",
+    title: "Conteúdo e redes com estratégia de marca",
+    summary:
+      "Também estrutura a marca no dia a dia, organizando presença, conteúdo, redes sociais e os pontos de contato para tudo falar a mesma língua.",
+    tags: ["Conteúdo", "Redes sociais", "Gestão de marca"],
+    image: "https://unsplash.com/photos/Aqc7znjxROM/download?force=true&w=1200",
   },
 ];
 
@@ -117,11 +121,11 @@ export const serviceTags = [
   "Branding",
   "Campanha",
   "Design",
-  "Conteudo",
+  "Conteúdo",
   "Performance",
   "Social",
-  "Midia",
-  "Lancamento",
+  "Mídia",
+  "Lançamento",
   "Filme",
   "Digital",
 ];
@@ -131,18 +135,18 @@ export const products = [
     id: "brand-system",
     name: "The Branding Way",
     description:
-      "Metodologia para criar, reposicionar e gerir marcas com clareza estrategica, repertorio cultural e acabamento visual de alto nivel.",
+      "Metodologia para criar, reposicionar e gerir marcas com clareza estratégica, repertório cultural e acabamento visual de alto nível.",
     points: [
-      "Imersao com liderancas e equipe comercial",
+      "Imersão com lideranças e equipe comercial",
       "Plataforma de marca e narrativa verbal",
-      "Sistema visual e aplicacoes prioritarias",
+      "Sistema visual e aplicações prioritárias",
     ],
   },
   {
     id: "sales-engine",
     name: "Sales Engine",
     description:
-      "Operacao conectando marketing, paginas, criativos e vendas para acelerar captacao e conversao sem perder consistencia de marca.",
+      "Operação conectando marketing, páginas, criativos e vendas para acelerar captação e conversão sem perder consistência de marca.",
     points: [
       "Mapeamento da jornada inteira",
       "Criativos com leitura de dados",
@@ -153,33 +157,33 @@ export const products = [
     id: "company-cell",
     name: "Safari in Company",
     description:
-      "Modelo in-house para marcas que precisam da nossa direcao criativa dentro da rotina da empresa e nao so em entregas pontuais.",
+      "Modelo in-house para marcas que precisam da nossa direção criativa dentro da rotina da empresa e não só em entregas pontuais.",
     points: [
-      "Presenca proxima do time",
-      "Gestao de backlog criativo",
-      "Priorizacao continua com foco em negocio",
+      "Presença próxima do time",
+      "Gestão de backlog criativo",
+      "Priorização contínua com foco em negócio",
     ],
   },
   {
     id: "content-studio",
     name: "Motion Content",
     description:
-      "Conteudo audiovisual e desdobramentos digitais alinhados ao plano estrategico da marca, com velocidade e acabamento de campanha.",
+      "Conteúdo audiovisual e desdobramentos digitais alinhados ao plano estratégico da marca, com velocidade e acabamento de campanha.",
     points: [
-      "Roteiro, direcao e desdobramento",
-      "Filmes curtos, pecas sociais e assets de campanha",
-      "Velocidade de producao sem perder capricho visual",
+      "Roteiro, direção e desdobramento",
+      "Filmes curtos, peças sociais e assets de campanha",
+      "Velocidade de produção sem perder capricho visual",
     ],
   },
   {
     id: "innovation-unit",
     name: "Sweet Project",
     description:
-      "Estrutura para conceber novos produtos, servicos e lancamentos com branding, design e comunicacao integrados desde o inicio.",
+      "Estrutura para conceber novos produtos, serviços e lançamentos com branding, design e comunicação integrados desde o início.",
     points: [
       "Leitura de mercado e comportamento",
-      "Definicao da proposta de valor",
-      "Pacote de lancamento e sustentacao da marca",
+      "Definição da proposta de valor",
+      "Pacote de lançamento e sustentação da marca",
     ],
   },
 ];
@@ -187,9 +191,9 @@ export const products = [
 export const values = [
   {
     eyebrow: "Acreditamos que todo job precisa de",
-    title: "Inteligencia",
+    title: "Inteligência",
     text:
-      "Nada comeca sem leitura de contexto, comportamento, competidores e oportunidades reais. A criacao entra em campo melhor quando ja sabe onde pode vencer.",
+      "Nada começa sem leitura de contexto, comportamento, competidores e oportunidades reais. A criação entra em campo melhor quando já sabe onde pode vencer.",
     image:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
   },
@@ -197,7 +201,7 @@ export const values = [
     eyebrow: "Acreditamos que todo job precisa de",
     title: "Criatividade",
     text:
-      "O diferencial visual aparece quando estrategia e repertorio se encontram. Transformamos briefs em discursos memoraveis e campanhas com identidade de verdade.",
+      "O diferencial visual aparece quando estratégia e repertório se encontram. Transformamos briefs em discursos memoráveis e campanhas com identidade de verdade.",
     image:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
   },
@@ -205,7 +209,7 @@ export const values = [
     eyebrow: "Acreditamos que todo job precisa de",
     title: "Performance",
     text:
-      "Medimos, aprendemos e corrigimos rota ao longo da jornada inteira. A performance deixa de ser um apendice e passa a orientar o sistema todo.",
+      "Medimos, aprendemos e corrigimos rota ao longo da jornada inteira. A performance deixa de ser um apêndice e passa a orientar o sistema todo.",
     image:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
   },
@@ -222,7 +226,7 @@ export const awards = [
   },
   {
     title: "Clube de Criacao",
-    description: "Selecoes por direcao de arte, copy e construcao de conceito.",
+    description: "Seleções por direção de arte, copy e construção de conceito.",
   },
   {
     title: "Midia Eficiente",
@@ -233,15 +237,15 @@ export const awards = [
 export const testimonials = [
   {
     quote:
-      "A Brand Safari nos ajudou a reposicionar a marca e organizar nossas campanhas com uma maturidade rara. O time alia repertorio visual, leitura de negocio e uma entrega muito caprichada.",
+      "A Brand Safari nos ajudou a reposicionar a marca e organizar nossas campanhas com uma maturidade rara. O time alia repertório visual, leitura de negócio e uma entrega muito caprichada.",
     author: "Claudia R.",
     role: "Head de marketing, Solare",
   },
   {
     quote:
-      "O processo e transparente, rapido e cheio de boas ideias. Eles conseguem transformar direcao estrategica em narrativas que realmente fazem a marca aparecer.",
+      "O processo é transparente, rápido e cheio de boas ideias. Eles conseguem transformar direção estratégica em narrativas que realmente fazem a marca aparecer.",
     author: "Andrea M.",
-    role: "Diretora de conteudo, Nexa Foods",
+    role: "Diretora de conteúdo, Nexa Foods",
   }
 ];
 
@@ -250,7 +254,7 @@ export const connections = [
     category: "Audiovisual",
     name: "Motion House",
     description:
-      "Produtora parceira para filmes, desdobramentos sociais, bastidores e campanhas com inteligencia de producao.",
+      "Produtora parceira para filmes, desdobramentos sociais, bastidores e campanhas com inteligência de produção.",
     cta: "Conhecer estrutura",
     href: "#contact",
   },
@@ -258,7 +262,7 @@ export const connections = [
     category: "Growth",
     name: "Safari Labs",
     description:
-      "Nucleo de performance e vendas digitais que conecta campanha, automacao, paginas e acompanhamento comercial.",
+      "Núcleo de performance e vendas digitais que conecta campanha, automação, páginas e acompanhamento comercial.",
     cta: "Ver como funciona",
     href: "#contact",
   },
@@ -276,7 +280,7 @@ export const contactFormFields = [
   {
     id: "phone",
     name: "phone",
-    label: "Numero para contato",
+    label: "Número para contato",
     type: "tel",
     placeholder: "(00) 00000-0000",
     autoComplete: "tel",

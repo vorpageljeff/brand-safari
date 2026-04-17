@@ -1091,6 +1091,14 @@ a {
   font-size: 2rem;
 }
 
+.project-card__content p {
+  max-width: 30rem;
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
 .tag-row,
 .service-tag-list,
 .product-points {
@@ -1922,6 +1930,10 @@ body::before {
 
 .site-shell .project-card__content h3 {
   font-size: 2.3rem;
+}
+
+.site-shell .project-card__content p {
+  max-width: 32rem;
 }
 
 .site-shell .service-tag-list span,

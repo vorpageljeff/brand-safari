@@ -106,18 +106,18 @@ export default function App() {
       });
 
       if (!response.ok) {
-        throw new Error("Nao foi possivel enviar o formulario.");
+        throw new Error("Não foi possível enviar o formulário.");
       }
 
       form.reset();
       setFormState({
         status: "success",
-        message: "Contato enviado com sucesso. A Brand Safari recebe isso no email e retorna em breve.",
+        message: "Contato enviado com sucesso. A Brand Safari recebe essa mensagem por e-mail e retorna em breve.",
       });
     } catch (error) {
       setFormState({
         status: "error",
-        message: "Nao foi possivel enviar agora. Tente novamente em alguns instantes ou use o email exibido ao lado.",
+        message: "Não foi possível enviar agora. Tente novamente em alguns instantes ou use o e-mail exibido ao lado.",
       });
     }
   };
@@ -144,7 +144,7 @@ export default function App() {
           </button>
 
           <div className="site-header__meta">
-            <nav className="site-nav" aria-label="Navegacao principal">
+            <nav className="site-nav" aria-label="Navegação principal">
               {navigation.map((item) => (
                 <a key={item.href} href={item.href}>
                   {item.label}
@@ -171,7 +171,7 @@ export default function App() {
             isMobileMenuOpen ? "content-wrap site-header__mobile-panel is-open" : "content-wrap site-header__mobile-panel"
           }
         >
-          <nav className="site-header__mobile-nav" aria-label="Navegacao mobile">
+          <nav className="site-header__mobile-nav" aria-label="Navegação mobile">
             {navigation.map((item) => (
               <a key={item.href} href={item.href} onClick={() => setIsMobileMenuOpen(false)}>
                 {item.label}
@@ -292,9 +292,9 @@ export default function App() {
 
         <section className="content-wrap content-section" id="portfolio">
           <SectionIntro
-            eyebrow="Portfolio"
-            title="Cases em destaque"
-            description="Uma seleção dos formatos de projeto que a Brand Safari constrói para posicionar, comunicar e expandir marcas."
+            eyebrow="Atuação"
+            title="Como a Brand Safari atua"
+            description="Algumas das frentes em que a Brand Safari ajuda a reposicionar marcas, estruturar infoprodutos e organizar a comunicação no dia a dia."
           />
 
           <div className="portfolio-grid">
@@ -309,6 +309,7 @@ export default function App() {
                 <div className="project-card__content">
                   <small>{project.client}</small>
                   <h3>{project.title}</h3>
+                  {project.summary ? <p>{project.summary}</p> : null}
 
                   <div className="tag-row">
                     {project.tags.map((tag) => (
@@ -321,7 +322,7 @@ export default function App() {
           </div>
 
           <a className="section-link" href="#contact">
-            Ver todos os formatos de projeto
+            Entender qual formato faz sentido para a sua marca
           </a>
         </section>
 
@@ -345,7 +346,7 @@ export default function App() {
                     <strong>{contactCompany}</strong>
                   </div>
                   <div className="contact-summary__item">
-                    <span>Localizacao</span>
+                    <span>Localização</span>
                     <strong>{contactLocation}</strong>
                   </div>
                   <div className="contact-summary__item">
@@ -367,7 +368,7 @@ export default function App() {
                   <a
                     className="contact-action contact-action--primary"
                     href="#contact-form"
-                    aria-label="Ir para o formulario de contato"
+                    aria-label="Ir para o formulário de contato"
                   >
                     {contactSection.ctaLabel}
                   </a>
@@ -375,16 +376,15 @@ export default function App() {
               </div>
 
               <div className="contact-form-card" id="contact-form">
-                <span className="contact-form-card__eyebrow">Formulario</span>
+                <span className="contact-form-card__eyebrow">Formulário</span>
                 <h3>Conte sobre a sua marca</h3>
                 <p>
-                  Preencha os dados abaixo e a Brand Safari recebe esse contato direto no email.
+                  Preencha os dados abaixo e a Brand Safari recebe esse contato diretamente por e-mail.
                 </p>
 
                 <form className="contact-form contact-form--surface" onSubmit={handleContactSubmit}>
                   <input type="hidden" name="_subject" value="Novo contato pelo site da Brand Safari" />
                   <input type="hidden" name="_template" value="table" />
-                  <input type="hidden" name="_captcha" value="false" />
                   <input type="text" name="_honey" className="contact-form__honeypot" tabIndex="-1" autoComplete="off" />
 
                   {contactFormFields.map((field) => (
