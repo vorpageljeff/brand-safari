@@ -35,7 +35,8 @@ export const heroVideo = {
 export const aboutContent = {
   eyebrow: "",
   title: "O que torna sua marca única\né o que faz ela crescer.",
-  description: "A Brand Safari é um estúdio de branding que estrutura esse caminho, do posicionamento ao plano de comunicação.",
+  description:
+    "A Brand Safari é um estúdio de branding que estrutura esse caminho, do posicionamento ao plano de comunicação.",
   complementaryText:
     "O trabalho combina diagnóstico, direção estratégica e conteúdo para transformar marca em um sistema claro de expressão, decisão e crescimento.",
 };
@@ -91,29 +92,69 @@ export const heroImages = [
 
 export const portfolioProjects = [
   {
-    client: "Reposicionamento",
-    title: "Reposicionamento de marca com direção clara",
+    client: "Case Felipe Soares",
+    title: "De agenda vazia a lista de espera",
     summary:
-      "A Brand Safari ajuda a reposicionar marcas com diagnóstico, definição de posicionamento e um plano de comunicação mais coerente com o momento do negócio.",
-    tags: ["Branding", "Posicionamento", "Comunicação"],
-    image: "https://unsplash.com/photos/3tCLyPBSQ5k/download?force=true&w=1200",
+      "Como uma marca com presença, mas sem direcionamento, se transformou no negócio que o Felipe sempre quis construir.",
+    tags: ["Branding", "Jornada", "Ticket médio"],
+    image: "/felipe-soares-case-02.jpg",
+    imageAlt: "Felipe Soares em pé dentro do salão A Casa do Cortador",
+    imagePosition: "center 8%",
+    imageHover: "/felipe-soares-case-01.jpg",
+    imageHoverAlt: "Felipe Soares e equipe da Brand Safari em retrato no espelho do salão",
+    imageHoverPosition: "center 22%",
+    details: [
+      "Felipe Soares tinha oito anos de carreira, especialização em cortes e a primeira posição no Google para cabeleireiro em Cascavel. Sabia exatamente o que queria ser: referência como o Cortador. Tinha tudo que parecia necessário para uma agenda cheia. Mas os horários vagos estavam lá, o ticket não refletia o nível do serviço, e parte da receita ia para o salão de terceiros onde trabalhava.",
+      "Foi com esse cenário que começou a consultoria. E foi a partir dele que construímos o caminho até onde Felipe está hoje: lista de espera, ticket médio 152% maior e o próprio salão inaugurado.",
+      "O trabalho começou pelo diagnóstico: entender onde a marca estava, o que já funcionava e o que precisava mudar. A partir daí, definimos objetivos em três horizontes: preencher a agenda por pelo menos um mês à frente, aumentar o ticket médio por cliente e, no prazo mais longo, abrir o próprio espaço.",
+      "O que precisava ser ajustado estava no direcionamento da comunicação e na jornada do cliente. Trabalhamos desde as estratégias mais básicas de marketing até as mais arrojadas, passando pela experiência de agendamento, pelo atendimento dentro do salão e pela construção de uma cultura interna que sustentasse tudo isso. O objetivo era que o time do Felipe carregasse a marca com a mesma clareza que ele.",
+      "Os resultados vieram. A agenda passou de horários vagos para lista de espera. O Instagram cresceu 40% de audiência. O clube de vantagens no WhatsApp chegou a 500 membros. E o ticket médio subiu 152%.",
+      "Esse ano, Felipe inaugurou A Casa do Cortador, o salão que ele mesmo comanda. Hoje é referência em cortes de cabelo na cidade e o espaço vai além da sua especialidade, reunindo outros serviços dentro de uma marca que ele construiu com identidade própria.",
+      "O trabalho continua. Hoje operamos com uma arquitetura de marca que cuida das duas frentes em paralelo: a marca do salão e a marca pessoal do Felipe, com novos objetivos.",
+    ],
   },
   {
-    client: "Infoproduto",
-    title: "Infoprodutos com estrutura e lançamento",
+    client: "Case Art House",
+    title: "Sofisticação que aparece no conteúdo",
     summary:
-      "Da ideia ao lançamento, ela auxilia a criar infoprodutos com proposta bem definida, narrativa forte e uma base estratégica para vender com mais clareza.",
-    tags: ["Infoproduto", "Lançamento", "Estratégia"],
-    image:
-      "https://images.unsplash.com/photo-1765894103922-8478553b8bf2?ixlib=rb-4.1.0&auto=format&fit=crop&w=1200&q=80",
+      "Criamos uma linguagem visual que traduz a curadoria e a elegância da Art House para o digital.",
+    tags: ["Conteúdo", "Curadoria", "Social"],
+    image: "/arthouse-case-01.jpg",
+    imageAlt: "Mesa posta da Art House com louças, talheres dourados e guardanapo floral",
+    imagePosition: "center 18%",
+    imageHover: "/arthouse-case-02.jpg",
+    imageHoverAlt: "Produtos de decoração e aromas da Michel Design Works expostos na Art House",
+    imageHoverPosition: "center 18%",
+    details: [
+      "A Art House tem 13,3 mil seguidores, uma linguagem visual consistente e um conteúdo que comunica o que a loja realmente é: um espaço de decoração, mesa posta, aromas e papelaria com curadoria própria e elegância em cada detalhe.",
+      "Nem sempre foi assim.",
+      "Quando começamos a trabalhar juntas, o conteúdo não representava o que a loja tinha para oferecer. As fotos mostravam produto, mas não mostravam a Art House. E a Art House tinha muito mais do que produto para comunicar.",
+      "O trabalho foi construir uma nova estrutura de conteúdo do zero: vídeos mais dinâmicos, composições que contextualizam os produtos e mostram como eles vivem juntos, com a elegância que o espaço sempre teve mas que ainda não aparecia no digital. O desafio era manter essa consistência atravessando linhas de produto muito diferentes entre si.",
+      "O conteúdo passou a comunicar um universo, não apenas um catálogo.",
+      "O trabalho continua evoluindo. O próximo passo é o lançamento do e-commerce, levando a curadoria da Art House para além do espaço físico.",
+    ],
   },
   {
-    client: "Marca + conteúdo",
-    title: "Conteúdo e redes com estratégia de marca",
+    client: "Case Polski",
+    title: "Personalidade como estratégia. É assim que a Polski se diferencia.",
     summary:
-      "Também estrutura a marca no dia a dia, organizando presença, conteúdo, redes sociais e os pontos de contato para tudo falar a mesma língua.",
-    tags: ["Conteúdo", "Redes sociais", "Gestão de marca"],
-    image: "https://unsplash.com/photos/Aqc7znjxROM/download?force=true&w=1200",
+      "Construímos uma marca com identidade e personalidade únicas, em um mercado onde o óbvio era o caminho mais fácil.",
+    tags: ["Branding", "Identidade", "Experiência"],
+    image: "/polski-case-01.jpg",
+    imageAlt: "Fachada azul da Polski com a marca aplicada na entrada da sorveteria",
+    imagePosition: "center 52%",
+    imageHover: "/polski-case-02.jpg",
+    imageHoverAlt: "Interior da Polski com o azul da marca aplicado no espaço",
+    imageHoverPosition: "center 44%",
+    details: [
+      "Ricardo chegou com um negócio quase pronto. Ponto comercial comprado em uma das principais ruas de Bonito, fornecedores definidos, logística planejada. O que ainda não existia era a marca. E o prazo era curto: a reforma precisava começar, e a sorveteria precisava abrir.",
+      "Em um mês, as portas da Polski estavam abertas.",
+      "O desafio não era só criar rápido. Era criar algo que se diferenciasse em uma cidade turística onde a maioria das marcas fala a mesma língua: os animais dos passeios, a natureza exuberante, o óbvio do ecoturismo. Ricardo queria uma marca única, com personalidade própria e potencial de franquia.",
+      "O trabalho começou pela análise do negócio e do contexto. O nome já estava escolhido pelos sócios: Polski, em homenagem ao avô que veio da Polônia. A partir daí, o que precisávamos construir era uma identidade com raiz e com alma.",
+      "A decisão estratégica central foi encontrar um ponto de conexão com Bonito que não fosse o caminho mais óbvio. A cidade é conhecida pelos seus animais, mas também pelos seus rios de águas cristalinas. Foi desse elemento que nasceu o azul polski, a cor que define a marca e que vai além da estética: ela comunica frescor, singularidade e pertencimento a um lugar específico.",
+      "O ponto comercial era o principal ponto de contato da marca. As decisões de marca precisavam se traduzir no ambiente, onde as pessoas iriam consumir, criar memória e associar experiência à Polski. O azul tomou as paredes da fachada e do interior. A parede de lambe-lambe trouxe personalidade e se tornou marca registrada do espaço.",
+      "O resultado é uma marca que opera com coerência do nome à experiência dentro do espaço: cada elemento comunica a mesma coisa, para o mesmo público, com a mesma personalidade. Uma marca com estrutura para crescer e, quando o momento chegar, ser franqueada.",
+    ],
   },
 ];
 
@@ -222,7 +263,7 @@ export const awards = [
   },
   {
     title: "Brasil Design Awards",
-    description: "Projetos reconhecidos pelo acabamento visual e consistencia de sistema.",
+    description: "Projetos reconhecidos pelo acabamento visual e consistência de sistema.",
   },
   {
     title: "Clube de Criacao",
@@ -231,7 +272,7 @@ export const awards = [
   {
     title: "Midia Eficiente",
     description: "Reconhecimento por campanhas com bom uso de investimento.",
-  }
+  },
 ];
 
 export const testimonials = [
@@ -246,7 +287,7 @@ export const testimonials = [
       "O processo é transparente, rápido e cheio de boas ideias. Eles conseguem transformar direção estratégica em narrativas que realmente fazem a marca aparecer.",
     author: "Andrea M.",
     role: "Diretora de conteúdo, Nexa Foods",
-  }
+  },
 ];
 
 export const connections = [

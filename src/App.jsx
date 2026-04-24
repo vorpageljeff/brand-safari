@@ -65,6 +65,11 @@ function TikTokIcon() {
   );
 }
 
+function handleCaseImageError(event) {
+  event.currentTarget.onerror = null;
+  event.currentTarget.src = "/case-photo-placeholder.svg";
+}
+
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openServiceIndex, setOpenServiceIndex] = useState(-1);
@@ -80,6 +85,7 @@ export default function App() {
       }
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -298,27 +304,69 @@ export default function App() {
           />
 
           <div className="portfolio-grid">
-            {portfolioProjects.map((project, index) => (
-              <article
-                key={project.client}
-                className={index === 0 ? "project-card project-card--featured" : "project-card"}
-              >
-                <img src={project.image} alt={project.title} />
-                <div className="project-card__overlay" />
+            {portfolioProjects.map((project, index) => {
+              const isCaseProject = Boolean(project.details?.length);
+              const isFeaturedProject = index === 0;
+              const cardClassName = [
+                "project-card",
+                isFeaturedProject ? "project-card--featured" : "",
+                isCaseProject ? "project-card--case" : "",
+              ]
+                .filter(Boolean)
+                .join(" ");
 
-                <div className="project-card__content">
-                  <small>{project.client}</small>
-                  <h3>{project.title}</h3>
-                  {project.summary ? <p>{project.summary}</p> : null}
+              return (
+                <article
+                  key={project.client}
+                  className={cardClassName}
+                  tabIndex={isCaseProject ? 0 : undefined}
+                >
+                  {isCaseProject ? (
+                    <div className="project-card__media-stack" aria-hidden="true">
+                      <img
+                        className="project-card__image project-card__image--base"
+                        src={project.image}
+                        alt={project.imageAlt ?? project.title}
+                        style={project.imagePosition ? { objectPosition: project.imagePosition } : undefined}
+                        onError={handleCaseImageError}
+                      />
+                      {project.imageHover ? (
+                        <img
+                          className="project-card__image project-card__image--hover"
+                          src={project.imageHover}
+                          alt={project.imageHoverAlt ?? project.title}
+                          style={project.imageHoverPosition ? { objectPosition: project.imageHoverPosition } : undefined}
+                          onError={handleCaseImageError}
+                        />
+                      ) : null}
+                    </div>
+                  ) : (
+                    <img src={project.image} alt={project.title} />
+                  )}
+                  <div className="project-card__overlay" />
 
-                  <div className="tag-row">
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
+                  <div className="project-card__content">
+                    <small>{project.client}</small>
+                    <h3>{project.title}</h3>
+                    {project.summary ? (
+                      <p className={isCaseProject ? "project-card__summary" : undefined}>{project.summary}</p>
+                    ) : null}
+
+                    {isCaseProject ? (
+                      <span className="project-card__cta">Passe o mouse em cima</span>
+                    ) : null}
+
+                    {isCaseProject && project.details?.length ? (
+                      <div className="project-card__expanded" aria-label={`Resumo expandido de ${project.client}`}>
+                        {project.details.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
 
           <a className="section-link" href="#contact">
